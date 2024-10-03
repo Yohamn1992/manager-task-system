@@ -1,0 +1,27 @@
+<h1>Lista de Tarefas</h1>
+<ul>
+    {% for task in tasks %}
+    <li>
+        <strong>{{ task.title }}</strong> ({{ task.get_priority_display }}) - 
+        {% if task.is_past_due %}
+            <span style="color: red;">[Atrasada]</span>
+        {% endif %}
+        - Categoria: {{ task.get_category_display }} - Prazo: {{ task.deadline }} - 
+        <a href="{% url 'task_update' task.pk %}">Editar</a> | 
+        <a href="{% url 'task_delete' task.pk %}">Excluir</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'task_create' %}">Criar Nova Tarefa</a>
+
+<h1>Tarefas Atrasadas</h1>
+<ul>
+    {% for task in overdue_tasks %}
+    <li>
+        <strong>{{ task.title }}</strong> ({{ task.get_priority_display }}) - 
+        <span style="color: red;">Prazo: {{ task.deadline }} [Atrasada]</span>
+        <a href="{% url 'task_update' task.pk %}">Editar</a> | 
+        <a href="{% url 'task_delete' task.pk %}">Excluir</a>
+    </li>
+    {% endfor %}
+</ul>
