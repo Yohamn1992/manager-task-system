@@ -1,5 +1,11 @@
 <h1>Lista de Tarefas</h1>
+
+<!-- Exibe o nome do usuário logado e o link para editar o perfil -->
+<p>Bem-vindo, {{ user.username }}!</p>
+<a href="{% url 'edit_profile' %}">Editar perfil</a>
+
 <ul>
+    <!-- Lista as tarefas -->
     {% for task in tasks %}
     <li>
         <strong>{{ task.title }}</strong> ({{ task.get_priority_display }}) - 
@@ -12,10 +18,12 @@
     </li>
     {% endfor %}
 </ul>
+
 <a href="{% url 'task_create' %}">Criar Nova Tarefa</a>
 
 <h1>Tarefas Atrasadas</h1>
 <ul>
+    <!-- Lista as tarefas atrasadas -->
     {% for task in overdue_tasks %}
     <li>
         <strong>{{ task.title }}</strong> ({{ task.get_priority_display }}) - 
@@ -25,3 +33,6 @@
     </li>
     {% endfor %}
 </ul>
+
+<!-- Link para sair (logout) -->
+<a href="{% url 'logout' %}">Sair</a>

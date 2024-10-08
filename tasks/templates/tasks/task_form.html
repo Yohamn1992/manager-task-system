@@ -1,7 +1,21 @@
-<h1>Criar Nova Tarefa</h1>
-<form method="post">
+<!-- tasks/task_form.html -->
+<form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}  <!-- Renderiza o formulário -->
+    {{ form.as_p }}
+    {% if form.errors %}
+        <div>
+            <strong>Erros:</strong>
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ field.label }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
     <button type="submit">Salvar</button>
 </form>
-<a href="{% url 'task_list' %}">Voltar à Lista de Tarefas</a>

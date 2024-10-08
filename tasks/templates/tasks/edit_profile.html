@@ -1,0 +1,31 @@
+<h1>Editar Perfil</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+</form>
+
+<!-- Seção para Alterar Senha -->
+<h2>Alterar Senha</h2>
+<p>A funcionalidade de alteração de senha ainda será implementada.</p>
+<!-- Formulário de alteração de senha visual, sem ação -->
+<form method="POST" action="#">
+    <div>
+        <label for="id_old_password">Senha Antiga:</label>
+        <input type="password" name="old_password" id="id_old_password" disabled>
+    </div>
+    <div>
+        <label for="id_new_password1">Nova Senha:</label>
+        <input type="password" name="new_password1" id="id_new_password1" disabled>
+    </div>
+    <div>
+        <label for="id_new_password2">Confirmação da Nova Senha:</label>
+        <input type="password" name="new_password2" id="id_new_password2" disabled>
+    </div>
+    <button type="button" disabled>Alterar Senha</button>
+</form>
+
+<!-- Seção para Deletar Conta -->
+<h2>Deletar Conta</h2>
+<p>A funcionalidade de deletar conta ainda será implementada.</p>
+<!-- Formulário de deletar
